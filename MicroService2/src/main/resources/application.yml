@@ -1,0 +1,25 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:h2:mem:example-app;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false
+kafka:
+    bootstrap-servers:
+      - kafka:9092
+    template:
+      default-topic: helloworld.message.topic
+    consumer:
+      keySerializer: org.springframework.kafka.support.serializer.StringSerializer
+      valueSerializer: org.springframework.kafka.support.serializer.StringSerializer
